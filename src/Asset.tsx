@@ -38,6 +38,34 @@ type DataRow = {
   markets: number;
 };
 
+const customStyles = {
+  cells: {
+    style: {
+      display: "flex",
+      justifyContent: "flex-start",
+      minWidth: "fit-content",
+      padding: "5px",
+      width: "100%",
+    },
+  },
+  columns: {
+    style: {
+      minWidth: "fit-content",
+    },
+  },
+  rows: {
+    style: {
+      '&:hover':{
+        backgroundColor: "rgba(100, 116, 139, 0.75)",
+        color : "white",
+        button : {
+          color : "white"
+        }
+      }
+    }
+  },
+};
+
 export function Assets(): JSX.Element {
   const dispatch = useDispatch();
 
@@ -128,6 +156,7 @@ export function Assets(): JSX.Element {
         subHeader
         subHeaderComponent={subHeaderComponentMemo}
         persistTableHead
+        customStyles={customStyles}
       />
     </div>
   );

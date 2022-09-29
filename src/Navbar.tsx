@@ -1,7 +1,7 @@
 import "./navbar.css";
 import appLogo from "./assets/SVG/appLogo.svg";
 // import burgerMenu from "./assets/SVG/burgerMenu.svg";
-import { Link, useLoaderData, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import React from "react";
 
 export function Navbar() {

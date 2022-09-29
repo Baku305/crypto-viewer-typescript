@@ -11,6 +11,7 @@ import "./market.css";
 import Select from "react-select";
 import React from "react";
 import { Obj } from "reselect/es/types";
+import { NumFormatter } from "./customhooks/numFormatter";
 
 
 const binancePublicEndpoint = "https://api.binance.com";
@@ -164,6 +165,17 @@ export function Market() {
         minWidth: "fit-content",
       },
     },
+    rows: {
+      style: {
+        '&:hover':{
+          backgroundColor: "rgba(100, 116, 139, 0.75)",
+          color : "white",
+          button : {
+            color : "white"
+          }
+        }
+      }
+    },
   };
 
   const options = [
@@ -209,7 +221,7 @@ export function Market() {
                   borderRadius: 0,
                   colors: {
                     ...theme.colors,
-                    primary25: "gray",
+                    primary25: "rgba(100, 116, 139, 0.75)",
                     primary: "black",
                   },
                 })}
@@ -259,7 +271,6 @@ export function Market() {
     }
   }, [dispatch, symbols24h, symbolsInfo, symbolsPrice, base_asset]);
 
-   
 
   const ExpandedComponent : React.FC<ExpanderComponentProps<DataRow>> = ( {data}  ) => (
     <div>
@@ -272,7 +283,7 @@ export function Market() {
         <div className="flex justify-between">
           <div className="p-2 w-full">
             <div className="p-1 font-bold">VOLUME</div>
-            <div className="p-1">{parseFloat(data.volume).toFixed(4)}</div>
+            <div className="p-1">{NumFormatter(data.volume)}</div>
           </div>
           <div className="p-2 w-full">
             <div className="p-1 font-bold">PRICE CHANGE</div>
@@ -318,6 +329,7 @@ export function Market() {
           progressPending={pending}
           expandableRows
           expandableRowsComponent={ExpandedComponent}
+          expandOnRowClicked
         />
       </div>
     </div>
